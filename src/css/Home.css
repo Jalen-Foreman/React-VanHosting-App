@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+@font-face {
+    font-family: Inter;
+    src: url('../fonts/Inter.ttf');
+}
+ 
+.container {
+    display: grid;
+    grid-template-areas:"nav nav nav nav"
+                        "main main main main"
+                        "footer footer footer footer";
+    grid-template-columns: repeat(4, 3fr);
+    grid-template-rows: 1fr 3fr 1fr;  
+}
+
+.container>* {
+    border: 1px solid black;
+}
+
+.container>nav {
+    grid-area: nav;
+}
+
+.container>main {
+    grid-area: main;
+}
+
+.container>footer {
+    grid-area: footer;
+}
+
+nav {
+    background-color: #FFF7ED;
+}
+
+nav ul {
+    display: grid;
+    grid-template-columns: 1fr 100px 100px;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+    justify-items: space-around;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-family: Inter;
+    font-size: 20px;
+}
+
+.logo {
+    width: 200px;
+    height: 200px;
+    margin-left: 20px;
+    object-fit: scale-down;
+}
+
+main {
+    background-image: url('../images/image 54.svg');
+    background-size: cover;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+main h1 {
+    font-family: Inter;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+    color: white;
+}
+
+main p {
+    font-family: Inter;
+    color: white;
+    line-height: 24px;
+}
+
+main a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    background-color: #FF8C38;
+    border: none;
+    width: 100%;
+    margin-top: 50px;
+    padding-block: .75rem;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform .1s ease-in-out;
+}
+
+footer {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: #252525;
+    font-size: 14px;
+    line-height: 22.92px;
+    color: #AAAAAA;
+    font-family: Inter;
+}
