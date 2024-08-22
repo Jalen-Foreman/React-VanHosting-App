@@ -17,12 +17,12 @@ html {
 
 .container {
   display: grid;
-  grid-template-areas:"nav nav nav nav"
+  grid-template-areas:
                       "img img img img"
                       "main main main main"
                       "footer footer footer footer";
   grid-template-rows: 0.5fr 0.1fr 1fr 0.5fr;
-  grid-template-columns: repeat(4, 3fr);
+  grid-template-columns: repeat(3, 3fr);
 
 }
 
@@ -30,9 +30,6 @@ html {
   border: 1px solid black;
 }
 
-.container>nav {
-  grid-area: nav;
-}
 
 .container>img {
   grid-area: img;
@@ -46,33 +43,6 @@ html {
   grid-area: footer;
 }
 
-nav {
-  background-color: #FFF7ED;
-}
-
-nav ul {
-  display: grid;
-  grid-template-columns: 1fr 100px 100px;
-  list-style-type: none;
-  margin: 0px;
-  padding: 0px;
-  align-items: center;
-  justify-items: space-around;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: black;
-  font-family: Inter;
-  font-size: 20px;
-}
-
-.logo {
-  width: 200px;
-  height: 200px;
-  margin-left: 20px;
-  object-fit: scale-down;
-}
 
 img.VanLife {
   width: 100%;
@@ -81,8 +51,6 @@ img.VanLife {
 
 main {
   display: grid;
-  grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
-  grid-template-rows: auto;
   grid-template-areas:'. h1 h1 .'
                       '. p p .'
                       '. div div .';
@@ -134,13 +102,3 @@ main div a {
   border-radius: 10px;
 }
 
-footer {
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  background-color: #252525;
-  font-size: 14px;
-  line-height: 22.92px;
-  color: #AAAAAA;
-  font-family: Inter;
-}
