@@ -1,17 +1,30 @@
 import {React, useEffect, useState} from 'react'
 import { Link, useParams, useLocation } from 'react-router-dom';
+import { getVans } from '../api';
 import '../css/index.css'
 
 const VanDetail = () => {
 
   const [van, setVan] = useState(null);
+  const [error, setError] = useState(null)	
+  const [loading, setLoading] = useState(false);
+
   const params = useParams()
+  const id = params.id
 
   useEffect(() => {
-    fetch(`/api/vans/${params.id}`)
-    .then(res => res.json())
-    .then(data => setVan(data.vans))
-  }, [params.id])
+	async function loadVans(id) {
+		try {
+			setLoading(true)
+			const data = await getVans(id)
+			setVan(data)
+		} catch(err) {
+			setError(err)
+		}
+		setLoading(false)
+	}
+	loadVans(id)
+  }, [id])
 
   let location = useLocation()
  
@@ -22,7 +35,14 @@ const VanDetail = () => {
 
   console.log(location.state.search);
   
-  
+	if (error) {
+		return <h1>{error.message}</h1>
+	}
+
+	if (loading) {
+		return <h1>Loading...</h1>;
+	}
+
 
   return (
 		<div className='van-detail-container'>

@@ -1,6 +1,7 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
-import '../css/Nav.css'
+import { Link, NavLink } from 'react-router-dom';
+import Avatar from '../images/avatar-icon.png'
+import '../css/index.css'
 
 const activeStyle = {
 	fontWeight: 'bold',
@@ -30,6 +31,15 @@ const Nav = () => {
 					style={({ isActive }) => (isActive ? activeStyle : null)}>
 					Host
 				</NavLink>
+				
+				<Link to='login' className='login-link'>
+					<img
+						src={Avatar}
+						alt='login'
+						className='login-icon'
+					/>
+				</Link>
+				
 			</nav>
 		</header>
 	);

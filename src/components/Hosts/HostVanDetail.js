@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import { React, useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useParams } from 'react-router-dom';
+import { getHostVans } from '../../api';
 import '../../css/index.css'
 
 const activeStyle = {
@@ -13,19 +14,34 @@ const activeStyle = {
 const HostVanDetail = () => {
 
 const [van, setVan] = useState();
+const [error, setError] = useState(null);
+const [loading, setLoading] = useState(false);
+
+
 const params = useParams();
+const id = params.id
 
 
 useEffect(() => {
-	fetch(`/api/host/vans/${params.id}`)
-		.then((res) => res.json())
-		.then((data) => setVan(data.vans[0]));
-}, []);
+	async function loadHostVan(id) {
+		try {
+			setLoading(true)
+			const data = await getHostVans(id)
+			setVan(data.vans[0])
+		} catch(err) {
+			setError(err)
+		}
+		setLoading(false)
+	}
+	loadHostVan(id)
+}, [id]);
 
-console.log(van)
+if (error) {
+	return <h1>{error.message}</h1>
+}
 
-if (!van) {
-    return <h1>Loading...</h1>
+if (loading) {
+	return <h1>Loading...</h1>;
 }
 
   return (
